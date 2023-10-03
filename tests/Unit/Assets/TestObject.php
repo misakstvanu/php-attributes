@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Assets;
 
-use TestAttribute;
+use Tests\Unit\Attributes\TestAttribute;
 
 #[TestAttribute]
 class TestObject {
     #[TestAttribute]
-    public $testProperty;
+    public mixed $testProperty;
 
     #[TestAttribute]
     public function testMethod(#[TestAttribute] $testParameter) {
