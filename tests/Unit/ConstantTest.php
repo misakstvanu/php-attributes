@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
+use ReflectionAttribute;
 use Tests\Unit\Assets\TestObject;
 use Tests\Unit\Attributes\TestAttribute;
 use function Misakstvanu\Attributes\constant_attributes;
@@ -15,7 +16,7 @@ class ConstantTest extends TestCase {
         $attributes = constant_attributes(TestObject::class, 'TEST_CONSTANT');
         $this->assertIsArray($attributes);
         $this->assertEquals(1, sizeof($attributes));
-        $this->assertInstanceOf(\ReflectionAttribute::class, $attributes[0]);
+        $this->assertInstanceOf(ReflectionAttribute::class, $attributes[0]);
         $this->assertEquals(TestAttribute::class, $attributes[0]->getName());
     }
 
