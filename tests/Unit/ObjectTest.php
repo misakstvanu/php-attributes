@@ -2,14 +2,33 @@
 
 namespace Tests\Unit;
 
-use Misakstvanu\Attributes\Attributes;
 use PHPUnit\Framework\TestCase;
+use Tests\Unit\Assets\TestObject;
+use Tests\Unit\Attributes\TestAttribute;
+use function Misakstvanu\Attributes\constant_attributes;
+use function Misakstvanu\Attributes\constant_attributes_names;
+use function Misakstvanu\Attributes\object_attributes;
+use function Misakstvanu\Attributes\object_attributes_names;
 
 class ObjectTest extends TestCase {
 
-    public function test_example()
+
+    public function test_reflection(): void
     {
-        $this->assertTrue(true);
+        $attributes = object_attributes(TestObject::class);
+        $this->assertIsArray($attributes);
+        $this->assertEquals(1, sizeof($attributes));
+        $this->assertInstanceOf(\ReflectionAttribute::class, $attributes[0]);
+        $this->assertEquals(TestAttribute::class, $attributes[0]->getName());
     }
-    
+
+    public function test_name(): void
+    {
+        $attributes = object_attributes_names(TestObject::class);
+        $this->assertIsArray($attributes);
+        $this->assertEquals(1, sizeof($attributes));
+        $this->assertIsString($attributes[0]);
+        $this->assertEquals(TestAttribute::class, $attributes[0]);
+    }
+
 }
