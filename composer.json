@@ -1,5 +1,6 @@
 {
     "name": "misakstvanu/attributes",
+    "description": "Attribute helper functions for PHP 8.2",
     "type": "library",
     "license": "MIT",
     "autoload": {
