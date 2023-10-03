@@ -3,16 +3,16 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Tests\Unit\Assets\TestObject;
 use Tests\Unit\Attributes\TestAttribute;
-use function Misakstvanu\Attributes\constant_attributes;
-use function Misakstvanu\Attributes\constant_attributes_names;
 use function Misakstvanu\Attributes\parameter_attributes;
 use function Misakstvanu\Attributes\parameter_attributes_names;
 
 class ParameterTest extends TestCase {
 
 
+    /**
+     * @throws \ReflectionException
+     */
     public function test_reflection(): void
     {
         $attributes = parameter_attributes(fn(#[TestAttribute] $value) => $value, 'value');
@@ -22,6 +22,9 @@ class ParameterTest extends TestCase {
         $this->assertEquals(TestAttribute::class, $attributes[0]->getName());
     }
 
+    /**
+     * @throws \ReflectionException
+     */
     public function test_name(): void
     {
         $attributes = parameter_attributes_names(fn(#[TestAttribute] $value) => $value, 'value');
