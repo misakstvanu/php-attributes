@@ -11,10 +11,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        },
-        "files": [
-            "tests/Unit/Assets/test_function.php"
-        ]
+        }
     },
     "authors": [
         {
