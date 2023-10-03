@@ -14,6 +14,7 @@ use ReflectionClassConstant;
 use ReflectionException;
 use ReflectionFunction;
 use ReflectionMethod;
+use ReflectionParameter;
 use ReflectionProperty;
 
 if(!function_exists('object_attributes')) {
@@ -74,7 +75,7 @@ if(!function_exists('parameter_attributes')) {
      * @throws ReflectionException
      */
     function parameter_attributes(string|array|object $function, int|string $parameter): array {
-        $reflection = new ReflectionFunction($function);
+        $reflection = new ReflectionParameter($function, $parameter);
         return $reflection->getAttributes();
     }
 }
